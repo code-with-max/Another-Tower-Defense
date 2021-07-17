@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://enemies/Enemy_00.gd" type="Script" id=1]
+[ext_resource path="res://enemies/reds/turret_01_mk1.png" type="Texture" id=2]
+[ext_resource path="res://enemies/reds/body_tracks.png" type="Texture" id=3]
+[ext_resource path="res://enemies/unit_stats_frame.tscn" type="PackedScene" id=4]
+
+[node name="Enemy" type="PathFollow2D"]
+loop = false
+script = ExtResource( 1 )
+health = 120.0
+speed = 80.0
+
+[node name="enemy_body" type="Sprite" parent="."]
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="enemy_turret" type="Sprite" parent="."]
+rotation = 1.5708
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 128, 128 )
+
+[node name="unit_stats" parent="." instance=ExtResource( 4 )]

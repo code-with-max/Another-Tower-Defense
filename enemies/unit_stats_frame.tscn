@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://debug_theme.tres" type="Theme" id=1]
+[ext_resource path="res://enemies/unit_stats.gd" type="Script" id=2]
+
+[node name="unit_stats" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_left = -41.3191
+margin_top = -161.038
+margin_right = 12.6809
+margin_bottom = -87.0384
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label1" type="Label" parent="VBox"]
+margin_right = 54.0
+margin_bottom = 22.0
+text = "Armor"
+
+[node name="Label2" type="Label" parent="VBox"]
+margin_top = 26.0
+margin_right = 54.0
+margin_bottom = 48.0
+text = "Speed"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="VBox"]
+margin_top = 52.0
+margin_right = 54.0
+margin_bottom = 74.0
+text = "Health"
+__meta__ = {
+"_edit_use_anchors_": false
+}

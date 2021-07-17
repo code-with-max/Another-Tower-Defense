@@ -1,15 +1,25 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://enemies/Enemy_00.gd" type="Script" id=1]
 [ext_resource path="res://enemies/reds/turret_01_mk1.png" type="Texture" id=2]
 [ext_resource path="res://enemies/reds/body_tracks.png" type="Texture" id=3]
 [ext_resource path="res://enemies/unit_stats_frame.tscn" type="PackedScene" id=4]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 36 )
+
 [node name="Enemy" type="PathFollow2D"]
 loop = false
 script = ExtResource( 1 )
 health = 120.0
 speed = 80.0
+
+[node name="Collision_body" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_body"]
+shape = SubResource( 1 )
 
 [node name="enemy_body" type="Sprite" parent="."]
 rotation = 1.5708

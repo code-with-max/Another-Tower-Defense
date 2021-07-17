@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://enemies/Enemy.gd"
+}, {
+"base": "Node2D",
+"class": "Turret",
+"language": "GDScript",
+"path": "res://turrets/turret.gd"
 } ]
 _global_script_class_icons={
-"Enemy": ""
+"Enemy": "",
+"Turret": ""
 }
 
 [application]
@@ -29,6 +35,13 @@ window/size/width=1280
 window/size/height=720
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Turrets"
+2d_physics/layer_3="Enemies"
+2d_physics/layer_4="Bullets"
 
 [physics]
 

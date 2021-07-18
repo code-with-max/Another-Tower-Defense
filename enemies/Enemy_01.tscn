@@ -5,22 +5,22 @@
 [ext_resource path="res://enemies/Enemy_01.gd" type="Script" id=3]
 [ext_resource path="res://enemies/unit_stats_frame.tscn" type="PackedScene" id=4]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 42, 32 )
-
-[sub_resource type="AtlasTexture" id=1]
-flags = 1
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 1
 atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 1
+atlas = ExtResource( 1 )
 region = Rect2( 128, 0, 128, 128 )
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
 "name": "run",
 "speed": 5.0
@@ -39,13 +39,12 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_body"]
 position = Vector2( 4, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="enemy_body" type="AnimatedSprite" parent="."]
 rotation = 1.5708
-frames = SubResource( 3 )
+frames = SubResource( 4 )
 animation = "run"
-frame = 1
 playing = true
 
 [node name="enemy_turret" type="Sprite" parent="."]

@@ -57,6 +57,8 @@ animations = [ {
 
 [node name="Iron_turret" type="Node2D"]
 script = ExtResource( 3 )
+attack_force = 20.0
+reload_time = 2.0
 
 [node name="Watch_radius" type="Area2D" parent="."]
 collision_layer = 2
@@ -79,5 +81,9 @@ scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 10 )
 animation = "shoot"
 
+[node name="Reloading_timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="Watch_radius" to="." method="_on_Watch_radius_area_entered"]
 [connection signal="area_exited" from="Watch_radius" to="." method="_on_Watch_radius_area_exited"]
+[connection signal="timeout" from="Reloading_timer" to="." method="_on_Reloading_timer_timeout"]

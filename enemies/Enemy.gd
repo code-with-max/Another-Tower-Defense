@@ -21,6 +21,7 @@ export (avaible_armors) var armor setget ,get_armor
 export var health : float setget set_health, get_health
 export var speed : float setget set_speed, get_speed
 
+onready var text_label = $unit_stats/VBox/Label3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,6 +45,8 @@ func _process(delta):
 
 func take_damage(damage_val):
 	set_health(get_health() - damage_val)
+	# For some debug, delete from release
+	text_label.set_text("Health: " + str(health))
 
 
 # SET_GET Section

@@ -1,64 +1,21 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://turrets/img/iron/turret_01_mk1.png" type="Texture" id=1]
+[ext_resource path="res://turrets/animation/iron/level_1.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://turrets/img/towers_walls_blank.png" type="Texture" id=2]
 [ext_resource path="res://turrets/Iron_turret.gd" type="Script" id=3]
+[ext_resource path="res://turrets/animation/iron/level_0.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://turrets/animation/iron/level_3.tres" type="SpriteFrames" id=5]
+[ext_resource path="res://turrets/animation/iron/level_4.tres" type="SpriteFrames" id=6]
+[ext_resource path="res://debug_theme.tres" type="Theme" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 200.0
-
-[sub_resource type="AtlasTexture" id=2]
-flags = 1
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=3]
-flags = 1
-atlas = ExtResource( 1 )
-region = Rect2( 128, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=4]
-flags = 1
-atlas = ExtResource( 1 )
-region = Rect2( 256, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 1
-atlas = ExtResource( 1 )
-region = Rect2( 384, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 1
-atlas = ExtResource( 1 )
-region = Rect2( 512, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 1
-atlas = ExtResource( 1 )
-region = Rect2( 640, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=8]
-flags = 1
-atlas = ExtResource( 1 )
-region = Rect2( 768, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=9]
-flags = 1
-atlas = ExtResource( 1 )
-region = Rect2( 896, 0, 128, 128 )
-
-[sub_resource type="SpriteFrames" id=10]
-animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
-"loop": true,
-"name": "shoot",
-"speed": 5.0
-} ]
 
 [node name="Iron_turret" type="Node2D"]
 script = ExtResource( 3 )
 attack_force = 20.0
 reload_time = 2.0
+animation_sprites = [ ExtResource( 4 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 6 ) ]
 
 [node name="Watch_radius" type="Area2D" parent="."]
 collision_layer = 2
@@ -78,14 +35,51 @@ region_rect = Rect2( 0, 0, 128, 128 )
 [node name="Animation" type="AnimatedSprite" parent="Turret_gun"]
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 10 )
+frames = ExtResource( 6 )
 animation = "shoot"
 speed_scale = 2.0
 
 [node name="Reloading_timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Upgrade_menu" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBox" type="HBoxContainer" parent="Upgrade_menu"]
+margin_left = -70.7906
+margin_top = -88.2523
+margin_right = 68.2094
+margin_bottom = -48.2523
+theme = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Upgrade" type="Button" parent="Upgrade_menu/HBox"]
+margin_right = 44.0
+margin_bottom = 40.0
+text = "Upg"
+
+[node name="Sell" type="Button" parent="Upgrade_menu/HBox"]
+margin_left = 48.0
+margin_right = 91.0
+margin_bottom = 40.0
+text = "Sell"
+
+[node name="Cancel" type="Button" parent="Upgrade_menu/HBox"]
+margin_left = 95.0
+margin_right = 139.0
+margin_bottom = 40.0
+text = "Can"
+
 [connection signal="area_entered" from="Watch_radius" to="." method="_on_Watch_radius_area_entered"]
 [connection signal="area_exited" from="Watch_radius" to="." method="_on_Watch_radius_area_exited"]
 [connection signal="animation_finished" from="Turret_gun/Animation" to="." method="_on_Animation_animation_finished"]
 [connection signal="timeout" from="Reloading_timer" to="." method="_on_Reloading_timer_timeout"]
+[connection signal="pressed" from="Upgrade_menu/HBox/Upgrade" to="." method="_on_Upgrade_pressed"]
+[connection signal="pressed" from="Upgrade_menu/HBox/Sell" to="." method="_on_Sell_pressed"]
+[connection signal="pressed" from="Upgrade_menu/HBox/Cancel" to="." method="_on_Cancel_pressed"]

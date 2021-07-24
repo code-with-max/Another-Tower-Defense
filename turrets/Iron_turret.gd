@@ -42,6 +42,8 @@ func _process(delta):
 
 
 func shoot(attack_obj):
+	$Turret_gun/Animation.play("shoot")
+#	if $Turret_gun/Animation.get_frame() == 2:
 	attack_obj.take_damage(attack_force)
 	loaded = false
 	reload_timer.start(reload_time)
@@ -58,3 +60,8 @@ func _on_Watch_radius_area_exited(area):
 
 func _on_Reloading_timer_timeout():
 	loaded = true
+
+
+func _on_Animation_animation_finished():
+	$Turret_gun/Animation.stop()
+	$Turret_gun/Animation.set_frame(0)

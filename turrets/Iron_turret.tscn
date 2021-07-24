@@ -80,10 +80,12 @@ rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 10 )
 animation = "shoot"
+speed_scale = 2.0
 
 [node name="Reloading_timer" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="area_entered" from="Watch_radius" to="." method="_on_Watch_radius_area_entered"]
 [connection signal="area_exited" from="Watch_radius" to="." method="_on_Watch_radius_area_exited"]
+[connection signal="animation_finished" from="Turret_gun/Animation" to="." method="_on_Animation_animation_finished"]
 [connection signal="timeout" from="Reloading_timer" to="." method="_on_Reloading_timer_timeout"]

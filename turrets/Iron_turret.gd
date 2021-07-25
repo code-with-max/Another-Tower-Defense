@@ -79,14 +79,22 @@ func _on_Sell_pressed():
 
 
 func _on_Cancel_pressed():
-	pass # Replace with function body.
+	hide_upgade_menu()
 
 
 func _on_Upgrade_pressed():
 	if current_level < 3:
 		current_level += 1
 		set_current_level(current_level)
-
+		hide_upgade_menu()
 	if current_level == 3:
 #		$Upgrade_menu/HBox/Upgrade.set_visible(false)
 		$Upgrade_menu/HBox/Upgrade.set_disabled(true)
+
+
+func _on_Upg_menu_button_pressed():
+	$Upgrade_menu.show()
+
+
+func hide_upgade_menu():
+	$Upgrade_menu.hide()

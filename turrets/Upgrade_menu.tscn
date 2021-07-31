@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://turrets/Upgrade_menu.gd" type="Script" id=1]
+[ext_resource path="res://turrets/img/ui_upgrage/Icon57.png" type="Texture" id=2]
+[ext_resource path="res://turrets/img/ui_upgrage/Icon42.png" type="Texture" id=3]
+[ext_resource path="res://turrets/img/ui_upgrage/Icon71.png" type="Texture" id=4]
+
+[node name="Upgrade_menu" type="Control"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -56.3447
+margin_top = -85.5589
+margin_right = 227.655
+margin_bottom = 7.44106
+rect_scale = Vector2( 0.4, 0.4 )
+color = Color( 0, 0, 0, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Upg" type="TouchScreenButton" parent="ColorRect"]
+normal = ExtResource( 2 )
+
+[node name="Del" type="TouchScreenButton" parent="ColorRect"]
+position = Vector2( 90, 0 )
+normal = ExtResource( 4 )
+
+[node name="Can" type="TouchScreenButton" parent="ColorRect"]
+position = Vector2( 180, 0 )
+normal = ExtResource( 3 )
+
+[connection signal="pressed" from="ColorRect/Upg" to="." method="_on_Upg_pressed"]
+[connection signal="pressed" from="ColorRect/Del" to="." method="_on_Del_pressed"]
+[connection signal="pressed" from="ColorRect/Can" to="." method="_on_Can_pressed"]

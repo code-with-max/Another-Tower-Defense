@@ -6,7 +6,7 @@
 [ext_resource path="res://turrets/animation/iron/level_0.tres" type="SpriteFrames" id=4]
 [ext_resource path="res://turrets/animation/iron/level_3.tres" type="SpriteFrames" id=5]
 [ext_resource path="res://turrets/animation/iron/level_4.tres" type="SpriteFrames" id=6]
-[ext_resource path="res://debug_theme.tres" type="Theme" id=7]
+[ext_resource path="res://turrets/Upgrade_menu.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 200.0
@@ -45,40 +45,7 @@ speed_scale = 2.0
 [node name="Reloading_timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Upgrade_menu" type="Control" parent="."]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBox" type="HBoxContainer" parent="Upgrade_menu"]
-margin_left = -70.7906
-margin_top = -88.2523
-margin_right = 68.2094
-margin_bottom = -48.2523
-theme = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Upgrade" type="Button" parent="Upgrade_menu/HBox"]
-margin_right = 44.0
-margin_bottom = 39.0
-text = "Upg"
-
-[node name="Sell" type="Button" parent="Upgrade_menu/HBox"]
-margin_left = 48.0
-margin_right = 91.0
-margin_bottom = 39.0
-text = "Sell"
-
-[node name="Cancel" type="Button" parent="Upgrade_menu/HBox"]
-margin_left = 95.0
-margin_right = 139.0
-margin_bottom = 39.0
-text = "Can"
+[node name="Upgrade_menu" parent="." instance=ExtResource( 7 )]
 
 [node name="Upg_menu_button" type="TouchScreenButton" parent="."]
 position = Vector2( -22, -22 )
@@ -88,7 +55,4 @@ shape = SubResource( 2 )
 [connection signal="area_exited" from="Watch_radius" to="." method="_on_Watch_radius_area_exited"]
 [connection signal="animation_finished" from="Turret_gun/Animation" to="." method="_on_Animation_animation_finished"]
 [connection signal="timeout" from="Reloading_timer" to="." method="_on_Reloading_timer_timeout"]
-[connection signal="pressed" from="Upgrade_menu/HBox/Upgrade" to="." method="_on_Upgrade_pressed"]
-[connection signal="pressed" from="Upgrade_menu/HBox/Sell" to="." method="_on_Sell_pressed"]
-[connection signal="pressed" from="Upgrade_menu/HBox/Cancel" to="." method="_on_Cancel_pressed"]
 [connection signal="pressed" from="Upg_menu_button" to="." method="_on_Upg_menu_button_pressed"]

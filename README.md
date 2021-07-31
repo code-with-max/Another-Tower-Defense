@@ -1,5 +1,5 @@
-# Another Tower Defense
-## _2D tower defence style game, developed on the Godot game engine_
+# Another Tower Defense Game
+### _2D tower defence style game, developed on the Godot game engine_
 
 
 

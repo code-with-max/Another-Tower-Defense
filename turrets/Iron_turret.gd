@@ -6,13 +6,20 @@ enum states {
 	ATTACK,
 }
 
+enum Attack_type {
+	IRON,
+	PLASMA,
+}
+
 var current_state = states.IDLE
 var upgrade_level = 0
 
 # must make setget methods!
 export var attack_force : float 
+export (Attack_type) var attack_type
 export var reload_time : float
 export (Array, Resource) var animation_sprites
+export var frame_for_shoot : int
 
 var loaded = true
 onready var reload_timer = $Reloading_timer
@@ -38,7 +45,7 @@ func _process(delta):
 				$Turret_gun.look_at(watching_enemies[0].get_global_position())
 				if loaded:
 					$Turret_gun/Animation.play("shoot")
-					if $Turret_gun/Animation.get_frame() == 2:
+					if $Turret_gun/Animation.get_frame() == frame_for_shoot:
 						# !!! Need check is current target is walid
 						shoot(watching_enemies[0])
 			else:
@@ -46,9 +53,12 @@ func _process(delta):
 
 
 func shoot(attack_obj):
-	attack_obj.take_damage(attack_force)
+	if attack_obj != null:
+		attack_obj.take_damage(attack_force)
 	loaded = false
 	reload_timer.start(reload_time)
+	# Debug
+	print(str(attack_type) + " - " + str(frame_for_shoot)) 
 
 
 func set_upg_level_animation(c_l):

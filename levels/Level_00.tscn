@@ -2,9 +2,8 @@
 
 [ext_resource path="res://levels/terrain.png" type="Texture" id=1]
 [ext_resource path="res://levels/towers_walls_grass_light_2.png" type="Texture" id=2]
-[ext_resource path="res://turrets/Iron_turret.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/free_build_place_holder.png" type="Texture" id=3]
 [ext_resource path="res://levels/Level_00.gd" type="Script" id=4]
-[ext_resource path="res://turrets/Plasma_turret.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=1]
 0/name = "terrain.png 0"
@@ -153,6 +152,22 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -111.888, 1081.91, 0, 0, 0, 0, 258.187, 1082.58, -16.1512, 21.2999, 16.1512, -21.2999, 309.531, 1059.78, 0, 0, 0, 0, 321.533, 1006.79, 0, 0, 0, 0, 322.867, 578.208, 0, 0, 0, 0, 818.301, 583.573, 0, 0, 0, 0, 850.975, 941.731, 0, 0, 0, 0, 2105.9, 947.768, 0, 0, 0, 0, 2114.57, 586.256, 0, 0, 0, 0, 2661.34, 566.806 )
 }
 
+[sub_resource type="TileSet" id=3]
+0/name = "free_build_place_holder.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
 [node name="Level_00" type="Node2D"]
 script = ExtResource( 4 )
 
@@ -168,6 +183,12 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -6
 position = Vector2( -0.752121, 6.43951 )
 scale = Vector2( 0.500463, 0.497549 )
 curve = SubResource( 2 )
+
+[node name="Build_zone" type="TileMap" parent="."]
+visible = false
+tile_set = SubResource( 3 )
+format = 1
+tile_data = PoolIntArray( 65537, 0, 0, 393219, 0, 0, 524298, 0, 0 )
 
 [node name="Control" type="Control" parent="."]
 margin_left = -1.0
@@ -229,10 +250,5 @@ autostart = true
 
 [node name="spawn_timer" type="Timer" parent="."]
 
-[node name="Iron_turret2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 536.605, 385.769 )
-
-[node name="Plasma_turret" parent="." instance=ExtResource( 5 )]
-position = Vector2( 230.306, 470.051 )
-
+[connection signal="pressed" from="Control/HBoxContainer/Build_mode_button" to="." method="_on_Build_mode_button_pressed"]
 [connection signal="timeout" from="wave_timer" to="." method="_on_wave_timer_timeout"]

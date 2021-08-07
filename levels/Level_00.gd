@@ -1,16 +1,43 @@
 extends Node2D
 
 
+var build_mode = false
+var build_cells = []
+
+onready var build_zone = $Build_zone
+
 var Enemies = [
 	preload("res://enemies/Enemy_00.tscn"),
 	preload("res://enemies/Enemy_01.tscn"),
 	]
+
+var Turrets = [
+	preload("res://turrets/Iron_turret.tscn"),
+	preload("res://turrets/Plasma_turret.tscn"),
+]
+
+
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
 	add_enemy() # Delete after debug
+	build_cells = build_zone.get_used_cells()
+	print(build_cells)
+
+
+func _unhandled_input(event):
+	if build_mode: ## if true
+		if event is InputEventScreenTouch and event.is_pressed():
+#			print("Pressed: " + str(event.get_position()))
+			var clicked_cell = build_zone.world_to_map(event.get_position())
+			print(clicked_cell)
+			if clicked_cell in build_cells:
+				var turret = random_choice(Turrets).instance()
+				turret.set_position(build_zone.map_to_world(clicked_cell) + Vector2(32, 32))
+				build_zone.set_cell(clicked_cell.x, clicked_cell.y, -1)
+				add_child(turret)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,3 +59,10 @@ func _on_wave_timer_timeout():
 	add_enemy()
 
 
+func _on_Build_mode_button_pressed():
+	if build_mode: ## if true
+		build_zone.hide()
+		build_mode = false
+	else: ## if false
+		build_zone.show()
+		build_mode = true

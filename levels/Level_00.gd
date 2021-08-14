@@ -38,6 +38,9 @@ func _unhandled_input(event):
 				turret.set_position(build_zone.map_to_world(clicked_cell) + Vector2(32, 32))
 				build_zone.set_cell(clicked_cell.x, clicked_cell.y, -1)
 				add_child(turret)
+				switch_build_mode()
+			else:
+				switch_build_mode()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,9 +63,14 @@ func _on_wave_timer_timeout():
 
 
 func _on_Build_mode_button_pressed():
+	switch_build_mode()
+
+
+func switch_build_mode():
 	if build_mode: ## if true
 		build_zone.hide()
 		build_mode = false
 	else: ## if false
 		build_zone.show()
 		build_mode = true
+	print("Build mode is: " + str(build_mode))

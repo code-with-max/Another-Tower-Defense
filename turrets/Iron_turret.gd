@@ -11,6 +11,8 @@ enum Attack_type {
 	PLASMA,
 }
 
+signal turret_is_sell(sell_position)
+
 var current_state = states.IDLE
 var upgrade_level = 0
 

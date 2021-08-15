@@ -13,15 +13,9 @@ _global_script_classes=[ {
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://enemies/Enemy.gd"
-}, {
-"base": "Node2D",
-"class": "Turret",
-"language": "GDScript",
-"path": "res://turrets/turret.gd"
 } ]
 _global_script_class_icons={
-"Enemy": "",
-"Turret": ""
+"Enemy": ""
 }
 
 [application]

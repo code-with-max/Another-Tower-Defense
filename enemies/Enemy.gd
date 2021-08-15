@@ -2,6 +2,9 @@ extends PathFollow2D
 
 class_name Enemy
 
+
+signal iam_on_end
+
 enum states {
 	MOVE, # 0
 	ATTACK, # 1
@@ -36,6 +39,7 @@ func _process(delta):
 		states.MOVE:
 			set_offset(get_offset() + speed * delta)
 			if get_unit_offset() == 1:
+				emit_signal("iam_on_end")
 				current_state = states.EXPLODE
 		states.ATTACK:
 			pass

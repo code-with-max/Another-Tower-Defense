@@ -1,5 +1,6 @@
 extends Control
 
+
 onready var turret = get_parent()
 onready var upgrage_button = $ColorRect/Upg
 
@@ -24,6 +25,7 @@ func _on_Upg_pressed():
 
 
 func _on_Del_pressed():
+	turret.emit_signal("turret_is_sell", turret.get_position())
 	turret.queue_free()
 
 

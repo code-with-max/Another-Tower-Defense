@@ -2,7 +2,7 @@
 
 [ext_resource path="res://turrets/animation/iron/level_1.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://turrets/img/towers_walls_blank.png" type="Texture" id=2]
-[ext_resource path="res://turrets/Iron_turret.gd" type="Script" id=3]
+[ext_resource path="res://turrets/Turret.gd" type="Script" id=3]
 [ext_resource path="res://turrets/animation/iron/level_0.tres" type="SpriteFrames" id=4]
 [ext_resource path="res://turrets/animation/iron/level_3.tres" type="SpriteFrames" id=5]
 [ext_resource path="res://turrets/animation/iron/level_4.tres" type="SpriteFrames" id=6]

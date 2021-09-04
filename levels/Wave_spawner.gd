@@ -8,7 +8,7 @@ onready var enemy_label = get_parent().get_node("UI/CR/Waves_label")
 
 var label_text = "Mobs left: %s"
 
-export var enemies_in_level = 10
+export var enemies_in_level = 1
 var enemy_counter = 0
 
 var Enemies = [
@@ -35,7 +35,7 @@ func add_enemy():
 
 
 func _on_Spawn_timer_timeout():
-	if enemy_counter <= enemies_in_level:
+	if enemy_counter < enemies_in_level:
 		add_enemy()
 		enemy_counter += 1
 		enemy_label.set_text(label_text % str(enemies_in_level - enemy_counter))

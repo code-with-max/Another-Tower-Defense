@@ -69,4 +69,4 @@ func _restore_cell_for_build(arg):
 
 
 func _on_Exit_button_t_pressed():
-	get_tree().quit()
+	GM.goto_scene(GM.levels["game_menu"])

@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://debug_theme.tres" type="Theme" id=1]
+[ext_resource path="res://game_ui/Button13.png" type="Texture" id=2]
+[ext_resource path="res://game_ui/Button14.png" type="Texture" id=3]
+[ext_resource path="res://game_ui/Button15.png" type="Texture" id=4]
+[ext_resource path="res://game_ui/Msg17.png" type="Texture" id=5]
+[ext_resource path="res://main_menu.gd" type="Script" id=6]
+
+[node name="main_menu" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Menu_rect" type="TextureRect" parent="."]
+margin_left = 373.352
+margin_top = 113.137
+margin_right = 873.352
+margin_bottom = 502.137
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Start_button" type="TouchScreenButton" parent="Menu_rect"]
+position = Vector2( 106.648, 82.0239 )
+normal = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Menu_rect/Start_button"]
+margin_left = 87.6812
+margin_top = 28.2843
+margin_right = 207.681
+margin_bottom = 57.2843
+theme = ExtResource( 1 )
+text = "Start Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options_button" type="TouchScreenButton" parent="Menu_rect"]
+position = Vector2( 106.648, 183.848 )
+normal = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Menu_rect/Options_button"]
+margin_left = 107.48
+margin_top = 28.2843
+margin_right = 227.48
+margin_bottom = 57.2843
+theme = ExtResource( 1 )
+text = "Options"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit_button" type="TouchScreenButton" parent="Menu_rect"]
+position = Vector2( 106.648, 268.701 )
+normal = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Menu_rect/Exit_button"]
+margin_left = 123.355
+margin_top = 32.2426
+margin_right = 167.355
+margin_bottom = 61.2426
+theme = ExtResource( 1 )
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Menu_rect/Start_button" to="." method="_on_Start_button_pressed"]
+[connection signal="pressed" from="Menu_rect/Exit_button" to="." method="_on_Exit_button_pressed"]

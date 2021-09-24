@@ -29,7 +29,6 @@ collision_mask = 4
 shape = SubResource( 1 )
 
 [node name="Turret_base" type="Sprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 128, 128 )
@@ -38,7 +37,6 @@ region_rect = Rect2( 0, 0, 128, 128 )
 
 [node name="Animation" type="AnimatedSprite" parent="Turret_gun"]
 rotation = 1.5708
-scale = Vector2( 0.5, 0.5 )
 frames = ExtResource( 4 )
 animation = "shoot"
 speed_scale = 2.0

@@ -45,6 +45,7 @@ animations = [ {
 } ]
 
 [node name="Enemy" type="PathFollow2D"]
+scale = Vector2( 2, 2 )
 loop = false
 script = SubResource( 5 )
 armor = 1
@@ -63,7 +64,6 @@ shape = SubResource( 1 )
 rotation = 1.5708
 frames = SubResource( 4 )
 animation = "run"
-frame = 1
 playing = true
 
 [node name="enemy_turret" type="Sprite" parent="."]
@@ -73,3 +73,4 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 128, 128 )
 
 [node name="unit_stats" parent="." instance=ExtResource( 4 )]
+visible = false

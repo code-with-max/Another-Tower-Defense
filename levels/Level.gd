@@ -27,7 +27,7 @@ func _unhandled_input(event):
 			var clicked_cell = build_zone.world_to_map(event.get_position())
 			if clicked_cell in build_cells:
 				var turret = random_choice(Turrets).instance()
-				turret.set_position(build_zone.map_to_world(clicked_cell) + Vector2(32, 32))
+				turret.set_position(build_zone.map_to_world(clicked_cell) + Vector2(64, 64))
 				build_zone.set_cell(clicked_cell.x, clicked_cell.y, -1)
 				add_child(turret)
 				turret.connect("turret_is_sell", self, "_restore_cell_for_build")

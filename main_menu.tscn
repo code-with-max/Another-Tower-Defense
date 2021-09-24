@@ -10,11 +10,22 @@
 [node name="main_menu" type="Node2D"]
 script = ExtResource( 6 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 1330.0
+margin_bottom = 770.0
+color = Color( 0.133333, 0.0431373, 0.286275, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Menu_rect" type="TextureRect" parent="."]
-margin_left = 373.352
-margin_top = 113.137
-margin_right = 873.352
-margin_bottom = 502.137
+margin_left = 231.931
+margin_top = 59.3969
+margin_right = 731.931
+margin_bottom = 448.397
+rect_scale = Vector2( 1.64528, 1.53185 )
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://levels/terrain.png" type="Texture" id=1]
 [ext_resource path="res://levels/towers_walls_grass_light_2.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://debug_theme.tres" type="Theme" id=6]
 [ext_resource path="res://levels/ui/Icon25.png" type="Texture" id=7]
 [ext_resource path="res://levels/ui/Icon78.png" type="Texture" id=8]
+[ext_resource path="res://levels/ui/Number10.png" type="Texture" id=9]
+[ext_resource path="res://levels/ui/Number02.png" type="Texture" id=10]
 
 [sub_resource type="TileSet" id=1]
 0/name = "terrain.png 0"
@@ -221,15 +223,15 @@ __meta__ = {
 }
 
 [node name="Score_Label" type="Label" parent="UI/HBoxContainer"]
-margin_left = 494.0
+margin_left = 517.0
 margin_top = 13.0
-margin_right = 529.0
+margin_right = 552.0
 margin_bottom = 27.0
 text = "Score"
 
 [node name="Build_mode_button" type="Button" parent="UI/HBoxContainer"]
-margin_left = 533.0
-margin_right = 621.0
+margin_left = 556.0
+margin_right = 644.0
 margin_bottom = 40.0
 text = "Build_mode"
 __meta__ = {
@@ -237,8 +239,8 @@ __meta__ = {
 }
 
 [node name="Exit_button" type="Button" parent="UI/HBoxContainer"]
-margin_left = 671.0
-margin_right = 706.0
+margin_left = 648.0
+margin_right = 683.0
 margin_bottom = 40.0
 text = "Exit"
 __meta__ = {
@@ -276,7 +278,36 @@ position = Vector2( 1000, 0 )
 scale = Vector2( 0.8, 0.8 )
 normal = ExtResource( 8 )
 
+[node name="CR_build_menu" type="ColorRect" parent="UI"]
+visible = false
+margin_left = 340.268
+margin_top = 18.5908
+margin_right = 884.268
+margin_bottom = 98.5908
+color = Color( 0.101961, 0.266667, 0.0627451, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IT_build" type="TouchScreenButton" parent="UI/CR_build_menu"]
+position = Vector2( 5.6123, 3.36737 )
+scale = Vector2( 0.8, 0.8 )
+normal = ExtResource( 9 )
+
+[node name="PL_build" type="TouchScreenButton" parent="UI/CR_build_menu"]
+position = Vector2( 94.2868, 2.24493 )
+scale = Vector2( 0.8, 0.8 )
+normal = ExtResource( 10 )
+
+[node name="Cancel_build" type="TouchScreenButton" parent="UI/CR_build_menu"]
+position = Vector2( 461.332, 4.48984 )
+scale = Vector2( 0.8, 0.8 )
+normal = ExtResource( 8 )
+
 [connection signal="timeout" from="Wave_spawner/Spawn_timer" to="Wave_spawner" method="_on_Spawn_timer_timeout"]
 [connection signal="pressed" from="UI/HBoxContainer/Build_mode_button" to="." method="_on_Build_mode_button_pressed"]
 [connection signal="pressed" from="UI/CR/Build_mode_t" to="." method="_on_Build_mode_button_pressed"]
 [connection signal="pressed" from="UI/CR/Exit_button_t" to="." method="_on_Exit_button_t_pressed"]
+[connection signal="pressed" from="UI/CR_build_menu/IT_build" to="." method="_on_IT_build_pressed"]
+[connection signal="pressed" from="UI/CR_build_menu/PL_build" to="." method="_on_PL_build_pressed"]
+[connection signal="pressed" from="UI/CR_build_menu/Cancel_build" to="." method="_on_Build_mode_button_pressed"]

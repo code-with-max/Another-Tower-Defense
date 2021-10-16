@@ -9,6 +9,7 @@
 extents = Vector2( 40, 36 )
 
 [node name="Enemy" type="PathFollow2D"]
+scale = Vector2( 2, 2 )
 loop = false
 script = ExtResource( 1 )
 health = 120.0
@@ -32,3 +33,4 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 128, 128 )
 
 [node name="unit_stats" parent="." instance=ExtResource( 4 )]
+visible = false
